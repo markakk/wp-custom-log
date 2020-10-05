@@ -8,7 +8,7 @@
  * Author: markak
  * Author URI: http://markak.lt/
  * Requires at least: 4.1
- * Tested up to: 5.2.4
+ * Tested up to: 5.5.1
  *
  * Text Domain: culog
  * Domain Path: /languages
