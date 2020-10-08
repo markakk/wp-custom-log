@@ -18,16 +18,11 @@ culog_vd( $variable, $file_name );
 *$variable* - (required) Variable or expression which write to .log file.  
 *$file_name* - (optional) String of .log file name, to which output logs (with extension). Default: `debug-custom.log`
 
-Write with prefix "ERROR" and function name:
+Write log with prefix and with the ability to specify "in where" parameter for easier log recognition:
 ```sh
-culog_error( $message, $func_name );
+culog_msg( $msg_pref, $variable, $in_where, $file_name );
 ```
-*$message* - (required) String of message.  
-*$func_name* - (optional) String of function name if want to see from where comes this log text (then output looks like `ERROR: My_message in func_name().`). Default: `''`
-
-Write with prefix "NOTICE" and function name:
-```sh
-culog_error( $message, $func_name );
-```
-*$message* - (required) String of message.  
-*$func_name* - (optional) String of function name if want to see from where comes this log text (then output looks like `NOTICE: My_message in func_name().`). Default: `''`
+*$msg_pref* - (required) String of log prefix, e.g. 'NOTICE'.
+*$variable* - (required) Variable or expression which write to .log file.
+*$func_name* - (optional) String of custom recognition name if want to easer identify this log (then output looks like `NOTICE: My_message in Identifier_name`). Default: `''`
+*$file_name* - (optional) String of .log file name, to which output logs (with extension). Default: `debug-custom.log`
