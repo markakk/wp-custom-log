@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Plugin Name: Custom development logs
  * Plugin URI: http://markak.lt
@@ -27,14 +26,9 @@ define('CULOG_FILE','debug-custom.log');
  * @param string $file_name - Output file name
  */
 if ( ! function_exists('custom_log') ) {
-  function custom_log($log, $file_name = CULOG_FILE) {
-    if ( true === WP_DEBUG ) {
-      if ( is_array($log) || is_object($log) ) {
-        error_log(print_r($log, true), 3, WP_CONTENT_DIR . '/' . $file_name);
-      } else {
-        error_log($log . PHP_EOL, 3, WP_CONTENT_DIR . '/' . $file_name);
-      }
-    }
+  function custom_log( $log, $file_name = '' ) {
+    $Culog_Core = new CuLog_Core();
+    $Culog_Core->simple_log($log, $file_name);
   }
 }
 
@@ -44,12 +38,11 @@ if ( ! function_exists('custom_log') ) {
  * @param string / array / object $variable - Log output
  * @param string $file_name - Output file name
  */
-function culog_vd($variable, $file_name = CULOG_FILE) {
-  ob_start();
-  var_dump($variable);
-  $result = ob_get_contents();
-  ob_end_clean();
-  error_log($result, 3, WP_CONTENT_DIR . '/' . CULOG_FILE);
+if ( ! function_exists('culog_vd') ) {
+  function culog_vd( $log, $file_name = '' ) {
+    $Culog_Core = new CuLog_Core();
+    $Culog_Core->vardump_log($log, $file_name);
+  }
 }
 
 /**
@@ -58,19 +51,69 @@ function culog_vd($variable, $file_name = CULOG_FILE) {
  * @param string $message - Log message
  * @param string $func_name - Function name if want write that in log file
  */
-function culog_error($message, $func_name = '') {
-  if ( $func_name != '' ) {
-    $func_txt = ' in ' . $func_name . '().';
-  } else {
-    $func_txt = '.';
+if ( ! function_exists('culog_msg') ) {
+  function culog_msg( $msg_pref, $log, $in_where = '', $file_name = '' ) {
+    $Culog_Core = new CuLog_Core();
+    $Culog_Core->message_log($msg_pref, $log, $in_where, $file_name);
   }
-  custom_log('ERROR: ' . $message . $func_txt);
 }
-function culog_notice($message, $func_name = '') {
-  if ( $func_name != '' ) {
-    $func_txt = ' in ' . $func_name . '().';
-  } else {
-    $func_txt = '.';
+
+/**
+ * Functionality of the plugin
+ */
+class CuLog_Core {
+  /* Output file settings */
+  private $directory = WP_CONTENT_DIR . '/';
+  private $default_name = 'debug-custom.log';
+
+  /* Public functions */
+  public function simple_log( $log, $file_name) {
+    if ( true === WP_DEBUG ) {
+      error_log( $this->build_log_text( $this->value_to_string($log, 'print_r') ), 3, $this->get_filepath( $file_name ));
+    }
   }
-  custom_log('NOTICE: ' . $message . $func_txt);
+
+  public function vardump_log( $log, $file_name ) {
+    if ( true === WP_DEBUG ) {
+      $this->simple_log( $this->value_to_string($log, 'var_dump'), $file_name );
+    }
+  }
+
+  public function message_log( $type, $log, $in_where, $file_name ) {
+    if ( true === WP_DEBUG ) {
+      $in_where = empty($in_where) ? '' : ' in ' . $in_where;
+      $output = strtoupper($type) . ': ' . $this->value_to_string($log, 'print_r') . $in_where;
+      error_log( $this->build_log_text( $output ), 3, $this->get_filepath( $file_name ));
+    }
+  }
+
+  /* Private functions */
+  private function value_to_string( $log, $method = 'print_r' ) {
+    if ( $method == 'print_r' ) {
+      if ( is_array($log) || is_object($log) ) {
+        return print_r($log, true);
+      } else {
+        return $log;
+      }
+    }
+    if ( $method == 'var_dump' ) {
+      ini_set("xdebug.overload_var_dump", "off");
+      ob_start();
+      var_dump($log);
+      return ob_get_clean();
+    }
+  }
+
+  private function get_filepath( $file_name ) {
+    if ( empty($file_name) ) return $this->directory . $this->default_name;
+    
+    $file = pathinfo( sanitize_file_name($file_name) );
+    if ( ! isset($file['extension']) ) $file['extension'] = 'log';
+    return $this->directory . $file['filename'] . '.' . $file['extension'];
+  }
+
+  private function build_log_text( $log ) {
+    $log_pref = '[' . date("Y-m-d H:i:s") . ']: ';
+    return $log_pref . $log . PHP_EOL;
+  }
 }
