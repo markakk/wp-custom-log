@@ -22,7 +22,7 @@ Write log with prefix and with the ability to specify "in where" parameter for e
 ```sh
 culog_msg( $msg_pref, $variable, $in_where, $file_name );
 ```
-*$msg_pref* - (required) String of log prefix, e.g. 'NOTICE'.
-*$variable* - (required) Variable or expression which write to .log file.
-*$func_name* - (optional) String of custom recognition name if want to easer identify this log (then output looks like `NOTICE: My_message in Identifier_name`). Default: `''`
-*$file_name* - (optional) String of .log file name, to which output logs (with extension). Default: `debug-custom.log`
+*$msg_pref* - (required) String of log prefix, e.g. 'NOTICE'.  
+*$variable* - (required) Variable or expression which write to .log file.  
+*$func_name* - (optional) String of custom recognition name if want to easer identify this log (then output looks like `NOTICE: My_message in Identifier_name`). Default: `''`  
+*$file_name* - (optional) String of .log file name, to which output logs (with extension). Default: `debug-custom.log`  
