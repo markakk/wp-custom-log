@@ -6,7 +6,7 @@ This plugin helps programmers to print the desired data to a log file using a si
 
 Write to log file:
 ```sh
-custom_log( $variable, $file_name );
+culog( $variable, $file_name );
 ```
 *$variable* - (required) Variable or expression which write to .log file.  
 *$file_name* - (optional) String of .log file name, to which output logs (with extension). Default: `debug-custom.log`
