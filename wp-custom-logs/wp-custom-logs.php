@@ -3,7 +3,7 @@
  * Plugin Name: Custom development logs
  * Plugin URI: http://markak.lt
  * Description: This plugin helps programmers to print the desired data to a log file using a simple function.
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author: markak
  * Author URI: http://markak.lt/
  * Requires at least: 4.1
@@ -25,8 +25,8 @@ define('CULOG_FILE','debug-custom.log');
  * @param string / array / object $log - Log output
  * @param string $file_name - Output file name
  */
-if ( ! function_exists('custom_log') ) {
-  function custom_log( $log, $file_name = '' ) {
+if ( ! function_exists('culog') ) {
+  function culog( $log, $file_name = '' ) {
     $Culog_Core = new CuLog_Core();
     $Culog_Core->simple_log($log, $file_name);
   }
