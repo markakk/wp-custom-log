@@ -4,21 +4,21 @@ This plugin helps programmers to print the desired data to a log file using a si
 
 ## Using
 
-Write to log file:
+**Write to log file:**
 ```sh
 culog( $variable, $file_name );
 ```
 *$variable* - (required) Variable or expression which write to .log file.  
 *$file_name* - (optional) String of .log file name, to which output logs (with extension). Default: `debug-custom.log`
 
-Write using var_dump function (usefull for boolean values):
+**Write using var_dump function (usefull for boolean values):**
 ```sh
 culog_vd( $variable, $file_name );
 ```
 *$variable* - (required) Variable or expression which write to .log file.  
 *$file_name* - (optional) String of .log file name, to which output logs (with extension). Default: `debug-custom.log`
 
-Write log with prefix and with the ability to specify "in where" parameter for easier log recognition:
+**Write log with prefix and with the ability to specify "in where" parameter for easier log recognition:**
 ```sh
 culog_msg( $msg_pref, $variable, $in_where, $file_name );
 ```
