@@ -11,7 +11,7 @@ if (!defined('ABSPATH')) {
  */
 if ( ! function_exists('culog') ) {
   function culog( $log, $file_name = '' ) {
-    $Culog_Core = new CuLog_Core();
+    $Culog_Core = new CuLog_Core(CULOG_PARAMS);
     $Culog_Core->simple_log($log, $file_name);
   }
 }
@@ -24,7 +24,7 @@ if ( ! function_exists('culog') ) {
  */
 if ( ! function_exists('culog_vd') ) {
   function culog_vd( $log, $file_name = '' ) {
-    $Culog_Core = new CuLog_Core();
+    $Culog_Core = new CuLog_Core(CULOG_PARAMS);
     $Culog_Core->vardump_log($log, $file_name);
   }
 }
@@ -32,12 +32,14 @@ if ( ! function_exists('culog_vd') ) {
 /**
  * Log message output with label
  *
- * @param string $message - Log message
- * @param string $func_name - Function name if want write that in log file
+ * @param string $msg_pref - Prefix in log message
+ * @param string $log - Log message
+ * @param string $in_where - Function or something name if want write that in log file
+ * @param string $file_name - Output file name
  */
 if ( ! function_exists('culog_msg') ) {
   function culog_msg( $msg_pref, $log, $in_where = '', $file_name = '' ) {
-    $Culog_Core = new CuLog_Core();
+    $Culog_Core = new CuLog_Core(CULOG_PARAMS);
     $Culog_Core->message_log($msg_pref, $log, $in_where, $file_name);
   }
 }

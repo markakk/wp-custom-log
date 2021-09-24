@@ -17,8 +17,12 @@
  * @author markak
  */
 
-define('CULOG_FILE', 'debug-custom.log');
 define('CULOG_DIR', plugin_dir_path( __FILE__ ));
+define('CULOG_PARAMS', array(
+    'enable' => WP_DEBUG,
+    'file_dir' => WP_CONTENT_DIR . '/',
+    'file_name' => 'debug-custom.log',
+));
 
 require_once CULOG_DIR . 'core/class-core.php';
 require_once CULOG_DIR . 'core/functions-logs.php';
