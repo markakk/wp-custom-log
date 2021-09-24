@@ -6,8 +6,9 @@
  * Version: 1.0.2
  * Author: markak
  * Author URI: http://markak.lt/
+ *
  * Requires at least: 4.1
- * Tested up to: 5.8
+ * Tested up to: 5.8.1
  *
  * Text Domain: culog
  * Domain Path: /languages
