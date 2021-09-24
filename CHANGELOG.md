@@ -1,6 +1,6 @@
 # Changelog
 
-## [1.0.2] - Unreleased
+## [1.0.2] - 2021-09-24
 ### Changed
 - moved all plugin functions from main file to separate files
 
