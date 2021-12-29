@@ -3,7 +3,7 @@
  * Plugin Name: Custom development logs
  * Plugin URI: http://plugins.markak.lt
  * Description: This plugin helps programmers to print the desired data to a log file using a simple function.
- * Version: 1.0.2
+ * Version: 1.0.3
  * Author: markak
  * Author URI: http://markak.lt/
  *
@@ -20,7 +20,7 @@
 
 define('CULOG_DIR', plugin_dir_path( __FILE__ ));
 define('CULOG_PARAMS', array(
-    'enable' => WP_DEBUG,
+    'enable' => true,
     'file_dir' => WP_CONTENT_DIR . '/',
     'file_name' => 'debug-custom.log',
 ));
