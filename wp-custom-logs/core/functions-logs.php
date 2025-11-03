@@ -11,7 +11,7 @@ if (!defined('ABSPATH')) {
  */
 if ( ! function_exists('culog') ) {
   function culog( $log, $file_name = '' ) {
-    $Culog_Core = new CuLog_Core(CULOG_PARAMS);
+    $Culog_Core = new CuLog_Core();
     $Culog_Core->simple_log($log, $file_name);
   }
 }
@@ -24,7 +24,7 @@ if ( ! function_exists('culog') ) {
  */
 if ( ! function_exists('culog_vd') ) {
   function culog_vd( $log, $file_name = '' ) {
-    $Culog_Core = new CuLog_Core(CULOG_PARAMS);
+    $Culog_Core = new CuLog_Core();
     $Culog_Core->vardump_log($log, $file_name);
   }
 }
@@ -39,7 +39,7 @@ if ( ! function_exists('culog_vd') ) {
  */
 if ( ! function_exists('culog_msg') ) {
   function culog_msg( $msg_pref, $log, $in_where = '', $file_name = '' ) {
-    $Culog_Core = new CuLog_Core(CULOG_PARAMS);
+    $Culog_Core = new CuLog_Core();
     $Culog_Core->message_log($msg_pref, $log, $in_where, $file_name);
   }
 }

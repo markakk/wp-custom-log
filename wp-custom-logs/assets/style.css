@@ -1,0 +1,67 @@
+.culog-hidden {
+    display: none !important;
+}
+
+.culog-page h1 {
+    margin-bottom: 5px;
+}
+
+.culog-page .culog-line {
+    margin-bottom: 10px;
+}
+
+.culog-page .culog-line-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+.culog-page .culog-line-header:hover {
+    background: #5a4cff;
+}
+
+.culog-page .culog-line-title {
+    cursor: pointer;
+    flex: 1;
+    margin-right: 10px;
+}
+
+.culog-page .culog-line-title b {
+    font-size: 18px;
+    color: #5a4cff;
+}
+
+.culog-page .culog-line-title small {
+    color: #999;
+}
+
+.culog-page .culog-line-header:hover .culog-line-title b,
+.culog-page .culog-line-header:hover .culog-line-title small {
+    color: #fff;
+}
+
+.culog-page .culog-delete-form {
+    margin: 0;
+}
+
+.culog-page .culog-delete-form button {
+    background: #ff5c5c;
+    color: white;
+    border: none;
+    padding: 2px 6px;
+    cursor: pointer;
+}
+
+.culog-page .culog-delete-form button:hover {
+    background: #b50a0a;
+}
+
+.culog-page .culog-file-view {
+    background: #f5f5f5;
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin-top: 5px;
+    max-height: 70vh;
+    overflow: auto;
+}

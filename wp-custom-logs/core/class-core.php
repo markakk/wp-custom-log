@@ -9,11 +9,11 @@ class CuLog_Core {
   public $_file_dir;
   public $_file_name;
 
-  public function __construct( $configs = array() )
+  public function __construct()
   {
-    $this->_debug_enabled = (isset($configs['enable'])) ? $configs['enable'] : true;
-    $this->_file_dir = (isset($configs['file_dir'])) ? $configs['file_dir'] : getcwd() . '/';
-    $this->_file_name = (isset($configs['file_name'])) ? $configs['file_name'] : 'debug-custom.log';
+    $this->_debug_enabled = true;
+    $this->_file_dir = apply_filters('culog_files_dir', '');
+    $this->_file_name = apply_filters('culog_file_name', '');
   }
 
   /* Public functions */
@@ -72,5 +72,4 @@ class CuLog_Core {
     $log_pref = '[' . date("Y-m-d H:i:s") . ']: ';
     return $log_pref . $log . PHP_EOL;
   }
-
 }
