@@ -1,6 +1,6 @@
 # Changelog
 
-## [Unreleased]
+## [1.0.4] - 2025-11-03
 ### Changed
 - removed CULOG_PARAMS global constant, but its use is still available
 

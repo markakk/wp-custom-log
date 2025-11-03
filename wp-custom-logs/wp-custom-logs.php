@@ -3,7 +3,7 @@
  * Plugin Name: Custom development logs
  * Plugin URI: http://plugins.markak.lt
  * Description: This plugin helps programmers to print the desired data to a log file using a simple function.
- * Version: 1.0.4b
+ * Version: 1.0.4
  * Author: markak
  * Author URI: http://markak.lt/
  *
@@ -18,7 +18,7 @@
  * @author markak
  */
 
-define('CULOG_VERSION', '1.0.4b');
+define('CULOG_VERSION', '1.0.4');
 define('CULOG_DIR', plugin_dir_path( __FILE__ ));
 define('CULOG_URL', plugin_dir_url( __FILE__ ));
 
